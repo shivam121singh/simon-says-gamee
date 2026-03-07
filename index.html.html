@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,103 +12,119 @@
             flex-direction:column;
             justify-content:center;
             align-items:center;
-
         }
-         .button1{
-height:150px;
-width:150px;
-border:4px solid black;
-border-radius:10px;
-margin:5px;
-background-color:pink;
-         }
-         .button2{
-            
-       height:150px;
-width:150px;
-border:4px solid black;
-border-radius:10px;
-margin:5px;
-background-color:skyblue;
-         }.button3{
-height:150px;
-width:150px;
-border:4px solid black;
-border-radius:10px;
-margin:5px;
-background-color:coral;
-         }.button4{
-height:150px;
-width:150px;
-border:4px solid black;
-border-radius:10px;
-margin:5px;
-background-color:red;
-         }
-         .divone{
+
+        .button1{
+            height:150px;
+            width:150px;
+            border:4px solid black;
+            border-radius:10px;
+            margin:5px;
+            background-color:pink;
+        }
+
+        .button2{
+            height:150px;
+            width:150px;
+            border:4px solid black;
+            border-radius:10px;
+            margin:5px;
+            background-color:skyblue;
+        }
+
+        .button3{
+            height:150px;
+            width:150px;
+            border:4px solid black;
+            border-radius:10px;
+            margin:5px;
+            background-color:coral;
+        }
+
+        .button4{
+            height:150px;
+            width:150px;
+            border:4px solid black;
+            border-radius:10px;
+            margin:5px;
+            background-color:red;
+        }
+
+        .divone{
             display:flex;
-         }
-         .divtwo{
+        }
+
+        .divtwo{
             display:flex;
-         }
-         .maindiv{
+        }
+
+        .maindiv{
             display:flex;
             flex-direction:column;
-         }
-         h1{
+        }
+
+        h1{
             font-size:50px;
             color:darkorange;
-            text-decoration:underline wavy
-         }
-         p{
+            text-decoration:underline wavy;
+        }
+
+        p{
             font-size:20px;
-         }
-         .btnflash{
+        }
+
+        .btnflash{
             background-color:white;
-         }
-         .userpress{
+        }
+
+        .userpress{
             background-color:green;
-         }
-        .instructionvideo a {
-          color:black;
-          text-decoration:none;
-      }
-      .instructionvideo {
-background-color:#fff3a3;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-top:50px;
-padding:10px;
-border-radius:8px;
-}
+        }
+
+        .instructionvideo a{
+            color:black;
+            text-decoration:none;
+        }
+
+        .instructionvideo{
+            background-color:#fff3a3;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-top:50px;
+            padding:10px;
+            border-radius:8px;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Simon says game</h1>
-    <p>press any key to start the game </p>
-    <div class="maindiv">
-        <div class="divone">
-<div class="button1 pink btn " id="pink">
-    
-</div>
-<div class="button2 skyblue btn" id="skyblue">
-    
-</div>
-        </div>
-        <div class="divtwo">
-<div class="button3 coral btn" id="coral">
-    
-</div>
-<div class="button4 red btn" id="red">
-    
-</div>
-        </div>
+
+<h1>Simon says game</h1>
+<p>press any key to start the game</p>
+
+<div class="maindiv">
+
+    <div class="divone">
+        <div class="button1 pink btn" id="pink"></div>
+        <div class="button2 skyblue btn" id="skyblue"></div>
     </div>
-    <div class="instructionvideo">
-        <a href="https://www.youtube.com/watch?v=EWJ5uYwQJGU">CLICK ON ME FOR KNOWING THAT HOW TO PLAY THIS GAME</a>
+
+    <div class="divtwo">
+        <div class="button3 coral btn" id="coral"></div>
+        <div class="button4 red btn" id="red"></div>
     </div>
-    <script>
+
+</div>
+
+<div class="instructionvideo">
+<a href="https://www.youtube.com/watch?v=EWJ5uYwQJGU">
+CLICK ON ME FOR KNOWING THAT HOW TO PLAY THIS GAME
+</a>
+</div>
+
+<script>
+
 let userseq = [];
 let gameseq = [];
 let level = 0;
@@ -115,21 +132,23 @@ let started = false;
 
 let buttons = ["pink","skyblue","coral","red"];
 
+// for mobile and keyboard i made two eventlistener
+
 document.addEventListener("keypress", startGame);
 document.addEventListener("click", startGame);
 
 function startGame(){
     if(started == false){
         started = true;
-        levelUp();
+        levelup();
     }
 }
+
 function btnflash(btn) {
     btn.classList.add("btnflash");
     setTimeout(function () {
         btn.classList.remove("btnflash");
     }, 300);
-    
 }
 
 function userpress(btn) {
@@ -137,11 +156,13 @@ function userpress(btn) {
     setTimeout(function () {
         btn.classList.remove("userpress");
     }, 300);
-     let wrongSound = new Audio("click.mp3");
-        wrongSound.play();
+
+    let wrongSound = new Audio("click.mp3");
+    wrongSound.play();
 }
 
 function levelup() {
+
     userseq = [];
 
     let para = document.querySelector("p");
@@ -150,13 +171,16 @@ function levelup() {
 
     let randomidx = Math.floor(Math.random() * 4);
     let randomcolor = buttons[randomidx];
+
     let randombtn = document.querySelector(`.${randomcolor}`);
 
     btnflash(randombtn);
+
     gameseq.push(randomcolor);
 }
 
 function buttonpress() {
+
     userpress(this);
 
     let userresponse = this.getAttribute("id");
@@ -181,7 +205,6 @@ function anscheck(idx) {
 
     } else {
 
-        //  Wrong button sound
         let wrongSound = new Audio("sound.mp3");
         wrongSound.play();
 
@@ -195,15 +218,15 @@ function anscheck(idx) {
             body.style.backgroundColor = "white";
         }, 300);
 
-        // Reset game
         userseq = [];
         gameseq = [];
         level = 0;
         started = false;
     }
 }
-         
-    </script>
-</body>
 
+</script>
+
+</body>
 </html>
+```
