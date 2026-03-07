@@ -81,11 +81,25 @@ margin-top:50px;
 padding:10px;
 border-radius:8px;
 }
+.highscore{
+    height:100px;
+    width:300px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    color:white;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.3);
+    margin-top:20px;
+}
     </style>
 </head>
 <body>
     <h1>Simon says game</h1>
-    <p>press any key to start the game <br> For mobile touch anywere to start the game  </p>
+    <p>press any key to start the game </p>
     <div class="maindiv">
         <div class="divone">
 <div class="button1 pink btn " id="pink">
@@ -107,7 +121,15 @@ border-radius:8px;
     <div class="instructionvideo">
         <a href="https://www.youtube.com/watch?v=EWJ5uYwQJGU">CLICK ON ME FOR KNOWING THAT HOW TO PLAY THIS GAME</a>
     </div>
+    <div class="highscore">
+<p></p>
+    </div>
     <script>
+        let Highscore=localStorage.getItem("highscore");
+             if(Highscore==null){
+                Highscore=0;
+             }
+             let maxscore=document.querySelector(".highscore p");
 let userseq = [];
 let gameseq = [];
 let level = 0;
@@ -124,7 +146,8 @@ function startGame() {
 }
 
 document.addEventListener("keypress", startGame);
-document.addEventListener("touchstart", startGame);
+// document.addEventListener("touchstart", startGame); for mobile phone 
+
 
 function btnflash(btn) {
     btn.classList.add("btnflash");
@@ -200,12 +223,18 @@ function anscheck(idx) {
         // Reset game
         userseq = [];
         gameseq = [];
+if(level>Highscore){
+        Highscore=level;
+    localStorage.setItem("highscore",Highscore);
+}
+maxscore.innerText=`HIGH SCORE:${Highscore}`;//shows high score
+
         level = 0;
         started = false;
     }
 }
          
+
     </script>
 </body>
 </html>
-
