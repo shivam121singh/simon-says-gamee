@@ -115,14 +115,15 @@ let started = false;
 
 let buttons = ["pink","skyblue","coral","red"];
 
-document.addEventListener("keypress", function () {
-    if (started == false) {
-        started = true;
-        console.log("game started");
-        levelup();
-    }
-});
+document.addEventListener("keypress", startGame);
+document.addEventListener("click", startGame);
 
+function startGame(){
+    if(started == false){
+        started = true;
+        levelUp();
+    }
+}
 function btnflash(btn) {
     btn.classList.add("btnflash");
     setTimeout(function () {
@@ -204,4 +205,5 @@ function anscheck(idx) {
          
     </script>
 </body>
+
 </html>
