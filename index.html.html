@@ -85,7 +85,7 @@ border-radius:8px;
 </head>
 <body>
     <h1>Simon says game</h1>
-    <p>press any key to start the game </p>
+    <p>press any key to start the game <br> For mobile click anywere to start the game  </p>
     <div class="maindiv">
         <div class="divone">
 <div class="button1 pink btn " id="pink">
@@ -115,13 +115,16 @@ let started = false;
 
 let buttons = ["pink","skyblue","coral","red"];
 
-document.addEventListener("keypress", function () {
+function startGame() {
     if (started == false) {
         started = true;
         console.log("game started");
         levelup();
     }
-});
+}
+
+document.addEventListener("keypress", startGame);
+document.addEventListener("click", startGame);
 
 function btnflash(btn) {
     btn.classList.add("btnflash");
