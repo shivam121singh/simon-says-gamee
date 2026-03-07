@@ -85,7 +85,7 @@ border-radius:8px;
 </head>
 <body>
     <h1>Simon says game</h1>
-    <p>press any key to start the game <br> For mobile click anywere to start the game  </p>
+    <p>press any key to start the game <br> For mobile touch anywere to start the game  </p>
     <div class="maindiv">
         <div class="divone">
 <div class="button1 pink btn " id="pink">
@@ -124,7 +124,7 @@ function startGame() {
 }
 
 document.addEventListener("keypress", startGame);
-document.addEventListener("click", startGame);
+document.addEventListener("touchstart", startGame);
 
 function btnflash(btn) {
     btn.classList.add("btnflash");
@@ -208,3 +208,4 @@ function anscheck(idx) {
     </script>
 </body>
 </html>
+
